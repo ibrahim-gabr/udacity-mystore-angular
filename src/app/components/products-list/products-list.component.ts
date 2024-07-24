@@ -45,6 +45,7 @@ export class ProductsListComponent {
         quantity: productToAdd.quantity
       };
       this.cartService.addToCart(productWithQuantity)
+      alert('Product Added to the cart!')
     }
   }
 }

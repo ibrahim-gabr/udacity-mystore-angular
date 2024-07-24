@@ -53,6 +53,7 @@ export class ProductDetailsComponent {
       };
       console.log({productWithQuantity})
       this.cartService.addToCart(productWithQuantity);
+      alert('Product Added to the cart!')
     }
   }
 

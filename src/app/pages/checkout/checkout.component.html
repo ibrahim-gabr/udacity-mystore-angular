@@ -51,7 +51,9 @@
               <div class="mt-1">
                 <input formControlName="email" required type="email" id="email" name="email"  autocomplete="email" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
               </div>
-              <div *ngIf="checkoutData.get('email')?.invalid" class="text-red-500 text-sm mt-1">Email is required</div>
+              <div class="mt-1" *ngFor="let validation of validationMessages.email">
+                <span class="error-message" *ngIf="checkoutData.get('email')?.hasError(validation.type) && (checkoutData.get('email')?.dirty || checkoutData.get('email')?.touched)">{{validation.message}}</span>
+              </div>
             </div>
           </div>
 
@@ -64,7 +66,9 @@
                 <div class="mt-1">
                   <input formControlName="cardNumber" required  type="text" id="card-number" name="card-number" autocomplete="cc-number" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
-                <div *ngIf="checkoutData.get('cardNumber')?.invalid" class="text-red-500 text-sm mt-1">Card Number is required</div>
+                <div class="mt-1" *ngFor="let validation of validationMessages.cardNumber">
+                  <span class="error-message" *ngIf="checkoutData.get('cardNumber')?.hasError(validation.type) && (checkoutData.get('cardNumber')?.dirty || checkoutData.get('cardNumber')?.touched)">{{validation.message}}</span>
+                </div>
               </div>
 
               <div class="col-span-2 sm:col-span-3">
@@ -72,7 +76,9 @@
                 <div class="mt-1">
                   <input formControlName="expiryDate"  required type="text" name="expiration-date" id="expiration-date" autocomplete="cc-exp" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
-                <div *ngIf="checkoutData.get('expiryDate')?.invalid" class="text-red-500 text-sm mt-1">Expiry Date is required</div>
+                <div class="mt-1" *ngFor="let validation of validationMessages.expiryDate">
+                  <span class="error-message" *ngIf="checkoutData.get('expiryDate')?.hasError(validation.type) && (checkoutData.get('expiryDate')?.dirty || checkoutData.get('expiryDate')?.touched)">{{validation.message}}</span>
+                </div>
 
               </div>
 
@@ -81,8 +87,9 @@
                 <div class="mt-1">
                   <input formControlName="cvv" type="text" name="cvc" id="cvc" autocomplete="csc" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
-                <div *ngIf="checkoutData.get('cvv')?.invalid" class="text-red-500 text-sm mt-1">cvv is required</div>
-
+                <div class="mt-1" *ngFor="let validation of validationMessages.cvv">
+                  <span class="error-message" *ngIf="checkoutData.get('cvv')?.hasError(validation.type) && (checkoutData.get('cvv')?.dirty || checkoutData.get('cvv')?.touched)">{{validation.message}}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -96,7 +103,9 @@
                 <div class="mt-1">
                   <input formControlName="address" type="text" id="address" name="address" autocomplete="street-address" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
-                <div *ngIf="checkoutData.get('address')?.invalid" class="text-red-500 text-sm mt-1">address is required</div>
+                <div class="mt-1" *ngFor="let validation of validationMessages.address">
+                  <span class="error-message" *ngIf="checkoutData.get('address')?.hasError(validation.type) && (checkoutData.get('address')?.dirty || checkoutData.get('address')?.touched)">{{validation.message}}</span>
+                </div>
 
               </div>
 
@@ -105,7 +114,9 @@
                 <div class="mt-1">
                   <input formControlName="city" required type="text" id="city" name="city" autocomplete="address-level2" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
-                <div *ngIf="checkoutData.get('city')?.invalid" class="text-red-500 text-sm mt-1">City is required</div>
+                <div class="mt-1" *ngFor="let validation of validationMessages.city">
+                  <span class="error-message" *ngIf="checkoutData.get('city')?.hasError(validation.type) && (checkoutData.get('city')?.dirty || checkoutData.get('city')?.touched)">{{validation.message}}</span>
+                </div>
 
               </div>
 
@@ -114,7 +125,9 @@
                 <div class="mt-1">
                   <input formControlName="region" required type="text" id="region" name="region" autocomplete="address-level1" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
-                <div *ngIf="checkoutData.get('region')?.invalid" class="text-red-500 text-sm mt-1">region is required</div>
+                <div class="mt-1" *ngFor="let validation of validationMessages.region">
+                  <span class="error-message" *ngIf="checkoutData.get('region')?.hasError(validation.type) && (checkoutData.get('region')?.dirty || checkoutData.get('region')?.touched)">{{validation.message}}</span>
+                </div>
 
               </div>
 
@@ -123,7 +136,9 @@
                 <div class="mt-1">
                   <input formControlName="postalCode" required type="text" id="postal-code" name="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                 </div>
-                <div *ngIf="checkoutData.get('postalCode')?.invalid" class="text-red-500 text-sm mt-1">Postal Code is required</div>
+                <div class="mt-1" *ngFor="let validation of validationMessages.postalCode">
+                  <span class="error-message" *ngIf="checkoutData.get('postalCode')?.hasError(validation.type) && (checkoutData.get('postalCode')?.dirty || checkoutData.get('postalCode')?.touched)">{{validation.message}}</span>
+                </div>
 
               </div>
             </div>

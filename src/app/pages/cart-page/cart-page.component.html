@@ -28,7 +28,7 @@
 
                   <div class="mt-4 flex items-center sm:absolute sm:left-1/2 sm:top-0 sm:mt-0 sm:block">
                     <label for="quantity-0" class="sr-only">Quantity, Nomad Tumbler</label>
-                    <select (change)="updateCartTotal($event,product)" [value]="product.quantity"  id="quantity-0" name="quantity-0" class="block max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
+                    <select [(ngModel)]="product.quantity" (ngModelChange)="updateCartTotal($event,product)" id="quantity-0" name="quantity-0" class="block max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>

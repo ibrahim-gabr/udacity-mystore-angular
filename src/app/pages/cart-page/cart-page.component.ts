@@ -34,7 +34,7 @@ export class CartPageComponent {
   updateCartTotal(newQuantity: Event, product: any) {
     // Update the product quantity with the new value
     console.log(newQuantity, 'newQuantity')
-    product.quantity = (newQuantity.target as HTMLInputElement)?.value;
+
 
     // Recalculate the cart total
     let newTotal = 0;
@@ -47,5 +47,6 @@ export class CartPageComponent {
 
   removeFromCart(product: Product): void {
       this.cartService.removeFromCart(product);
+      alert('Product removed from the cart!')
   }
 }

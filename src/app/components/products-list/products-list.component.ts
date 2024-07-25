@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from "@angular/core";
 import {HttpService} from "../../services/http.service";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -17,35 +17,22 @@ import {CartService} from "../../services/cart.service";
   styleUrl: './products-list.component.css'
 })
 export class ProductsListComponent {
-  products: Product[]
-  quantity: number = 1;
+
+  @Output() productAdded = new EventEmitter<Product>();
+  @Input() products: Product[] = []
 
   constructor(private httpService: HttpService, private router: Router, private productService: ProductsService, private cartService: CartService) {
-    this.products = []
+
   }
 
   ngOnInit() {
-    this.httpService.getProducts().subscribe(data => {
-      console.log(data, 'products')
-      this.products = data
-      this.products.forEach((product) => {
-        product.quantity = 1;
-      })
-      this.productService.updateProducts(this.products)
-    })
-
 
   }
 
   addToCart(product: Product) {
     const productToAdd = this.products.find((p) => p.id === product.id);
     if (productToAdd) {
-      const productWithQuantity = {
-        ...productToAdd,
-        quantity: productToAdd.quantity
-      };
-      this.cartService.addToCart(productWithQuantity)
-      alert('Product Added to the cart!')
+      this.productAdded.emit(productToAdd);
     }
   }
 }
